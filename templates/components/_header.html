@@ -4,10 +4,12 @@
   <nav id="navbar">
     <div class="container d-flex justify-content-between align-items-center">
       <div class="logo">
-        <img src="{% static './img/netflix_logo.png' %}" alt="" />
+        <a href="{% url "index_page" %}"><img src="{% static './img/netflix_logo.png' %}" alt="" /></a>
       </div>
 
       <div class="menu d-flex gap-4 rounded-2">
+        {% if request.path == '/' %}
+        
         <select
           name=""
           id=""
@@ -17,11 +19,15 @@
           <option value="">İngilizce</option>
         </select>
 
-        <a class="btn btn-danger" href="">Oturum Aç</a>
+        <a class="btn btn-danger" href="{% url "login_page" %}">Oturum Aç</a>
+        
+        {% endif %}
       </div>
     </div>
   </nav>
 
+  {% if request.path == '/' %}
+  
   <div class="baslik mt-5">
     <div
       class="container text-white d-flex flex-column justify-content-center align-items-center text-center mt-5"
@@ -52,4 +58,11 @@
       </form>
     </div>
   </div>
+  
+  {% else %}
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="bg-black bg-opacity-50" style="width: 50%; height: 100%;"></div>
+    </div>
+  
+  {% endif %}
 </header>
