@@ -23,7 +23,7 @@ urlpatterns = [
     path("", include("main.urls")),
 
     #* User App:
-    path("user/", include("users.urls")),
+    path("user/", include("user.urls")),
 
     path('admin/', admin.site.urls),
 ]
