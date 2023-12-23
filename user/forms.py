@@ -20,5 +20,7 @@ class UserRegisterForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget = widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Kullanıcı Adı'})
         self.fields['email'].widget = widgets.EmailInput(attrs={'class': 'form-control', 'placeholder': 'ornek@gmail.com'})
-        self.fields['password1'].widget = widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Şifre'})
-        self.fields['password2'].widget = widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Şifre Tekrar'})
+        self.fields['password1'].widget = widgets.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Şifre'})
+        self.fields['password2'].widget = widgets.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Şifre Tekrar'})
+        for fieldname in ['username', 'email', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
